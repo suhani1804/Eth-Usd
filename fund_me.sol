@@ -29,7 +29,7 @@ contract fund_me
         //msg.value is the global keyword that get the value of the function
         //in require comma(,) is separated to if and else
         funder.push(msg.sender);
-        addresstoamountfunded(msg.sender) = msg.value;
+        addresstoamountfunded[msg.sender] += msg.value;
     }
 
 }
