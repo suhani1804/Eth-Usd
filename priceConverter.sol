@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 
-pragma solidity ^0.8.0;
-import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+pragma solodity >= 0.6.0 < 0.9.0;
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol"; 
 
 //All the functions in library should be internal 
 
 library priceConverter
 {
-    function getprice() internal view return (uint256)
-    {
+    function getprice() internal view returns (uint256){
+
         //to get the price we have to use chainlink datafeed 
         //As to get the data from the outside of the contract we need two things
         //ABI and ADDRESS of the contract where we want to get the data
@@ -19,7 +19,7 @@ library priceConverter
         return uint256(price * 1e18);
 
     }
-    function getversion internal view return (uint256)
+    function getversion() internal view returns (uint256)
     {
         //Instead of writing the whole code we call the AggregatorV3Interface to get the all the fuction in it 
         //This is the esy way to interract to the outside of the contract
@@ -29,7 +29,7 @@ library priceConverter
         //pricefeed.version will return what version the pricefeed at i.e the version of the contract address
     }
 
-    function getconversion(ethAmount) internal view return (uint256) 
+    function getconversion(ethAmount) internal view returns (uint256) 
     {
         uint256 ethprice =getprice();
         uint256 ethAmountInUsd = (ethprice * ethAmount)/ 1e18;
